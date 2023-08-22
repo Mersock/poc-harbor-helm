@@ -1,0 +1,29 @@
+** Please be patient while the chart is being deployed **
+
+Redis&reg; can be accessed via port 6379 on the following DNS name from within your cluster:
+
+    harbor-redis.harbor.svc.cluster.local for read only operations
+
+For read/write operations, first access the Redis&reg; Sentinel cluster, which is available in port 26379 using the same domain name above.
+
+
+
+To connect to your Redis&reg; server:
+
+1. Run a Redis&reg; pod that you can use as a client:
+
+   kubectl run --namespace harbor redis-client --restart='Never'  --image docker.io/bitnami/redis:7.2.0-debian-11-r3 --command -- sleep infinity
+
+   Use the following command to attach to the pod:
+
+   kubectl exec --tty -i redis-client \
+   --namespace harbor -- bash
+
+2. Connect using the Redis&reg; CLI:
+   redis-cli -h harbor-redis -p 6379 # Read only operations
+   redis-cli -h harbor-redis -p 26379 # Sentinel access
+
+To connect to your database from outside the cluster execute the following commands:
+
+    kubectl port-forward --namespace harbor svc/harbor-redis 6379:6379 &
+    redis-cli -h 127.0.0.1 -p 6379
