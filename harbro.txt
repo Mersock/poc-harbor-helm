@@ -1,0 +1,25 @@
+kubectl patch svc harbor-application-core   -p '{"metadata":{"annotations":{"konghq.com/protocols":"https"}}}'
+kubectl patch svc harbor-application-portal      -p '{"metadata":{"annotations":{"konghq.com/protocols":"https"}}}'
+kubectl patch svc harbor-application-registry   -p '{"metadata":{"annotations":{"konghq.com/protocols":"https"}}}'
+kubectl patch svc harbor-application-trivy    -p '{"metadata":{"annotations":{"konghq.com/protocols":"https"}}}'
+kubectl patch svc harbor-application-jobservice   -p '{"metadata":{"annotations":{"konghq.com/protocols":"https"}}}'
+kubectl patch svc harbor-application-notary-server -p '{"metadata":{"annotations":{"konghq.com/protocols":"https"}}}'
+kubectl patch svc harbor-application-notary-signer    -p '{"metadata":{"annotations":{"konghq.com/protocols":"https"}}}'
+
+kubectl patch svc harbor-application-core   -p '{"metadata":{"annotations":{"konghq.com/protocol":"https"}}}'
+kubectl patch svc harbor-application-portal      -p '{"metadata":{"annotations":{"konghq.com/protocol":"https"}}}'
+kubectl patch svc harbor-application-registry  -p '{"metadata":{"annotations":{"konghq.com/protocol":"https"}}}'
+kubectl patch svc harbor-application-trivy    -p '{"metadata":{"annotations":{"konghq.com/protocol":"https"}}}'
+kubectl patch svc harbor-application-jobservice   -p '{"metadata":{"annotations":{"konghq.com/protocol":"https"}}}'
+kubectl patch svc harbor-application-notary-server -p '{"metadata":{"annotations":{"konghq.com/protocol":"https"}}}'
+kubectl patch svc harbor-application-notary-signer   -p '{"metadata":{"annotations":{"konghq.com/protocol":"https"}}}'
+
+
+Adding secret Ingress
+cert-manager.io/cluster-issuer: zerossl
+    ingress.kubernetes.io/proxy-body-size: "0"
+    ingress.kubernetes.io/ssl-redirect: "true"
+    konghq.com/https-redirect-status-code: "308"
+    konghq.com/protocols: https
+    meta.helm.sh/release-name: poc-harbor
+    meta.helm.sh/release-namespace: harbor
