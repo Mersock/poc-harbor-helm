@@ -1,0 +1,112 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  annotations:
+    meta.helm.sh/release-name: harbor-application 
+    meta.helm.sh/release-namespace: harbor
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: harbor-application
+  namespace: harbor
+spec:
+  dnsNames:
+  - harbor.papermint.io
+  issuerRef:
+    kind: Issuer
+    name: harbor-application-selfsigned-issuer
+  secretName: harbor-application-cert
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  annotations:
+    meta.helm.sh/release-name: harbor-application 
+    meta.helm.sh/release-namespace: harbor
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: harbor-application-core
+  namespace: harbor
+spec:
+  dnsNames:
+  - harbor-application-core.harbor.svc.cluster.local
+  - harbor-application-core
+  issuerRef:
+    kind: Issuer
+    name: harbor-application-selfsigned-issuer
+  secretName: harbor-application-core-cert
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  annotations:
+    meta.helm.sh/release-name: harbor-application 
+    meta.helm.sh/release-namespace: harbor
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: harbor-application-jobservice
+  namespace: harbor
+spec:
+  dnsNames:
+  - harbor-application-jobservice.harbor.svc.cluster.local
+  - harbor-application-jobservice
+  issuerRef:
+    kind: Issuer
+    name: harbor-application-selfsigned-issuer
+  secretName: harbor-application-jobservice-cert
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  annotations:
+    meta.helm.sh/release-name: harbor-application 
+    meta.helm.sh/release-namespace: harbor
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: harbor-application-registry
+  namespace: harbor
+spec:
+  dnsNames:
+  - harbor-application-registry.harbor.svc.cluster.local
+  - harbor-application-registry
+  issuerRef:
+    kind: Issuer
+    name: harbor-application-selfsigned-issuer
+  secretName: harbor-application-registry-cert
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  annotations:
+    meta.helm.sh/release-name: harbor-application 
+    meta.helm.sh/release-namespace: harbor
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: harbor-application-portal
+  namespace: harbor
+spec:
+  dnsNames:
+  - harbor-application-portal.harbor.svc.cluster.local
+  - harbor-application-portal
+  issuerRef:
+    kind: Issuer
+    name: harbor-application-selfsigned-issuer
+  secretName: harbor-application-portal-cert
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  annotations:
+    meta.helm.sh/release-name: harbor-application 
+    meta.helm.sh/release-namespace: harbor
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: harbor-application-trivy
+  namespace: harbor
+spec:
+  dnsNames:
+  - harbor-application-trivy.harbor.svc.cluster.local
+  - harbor-application-trivy
+  issuerRef:
+    kind: Issuer
+    name: harbor-application-selfsigned-issuer
+  secretName: harbor-application-trivy-cert
