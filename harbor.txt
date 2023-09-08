@@ -16,7 +16,7 @@ kubectl patch svc harbor-application-notary-signer   -p '{"metadata":{"annotatio
 
 
 Adding secret Ingress
-cert-manager.io/cluster-issuer: zerossl
+    cert-manager.io/cluster-issuer: zerossl
     ingress.kubernetes.io/proxy-body-size: "0"
     ingress.kubernetes.io/ssl-redirect: "true"
     konghq.com/https-redirect-status-code: "308"
